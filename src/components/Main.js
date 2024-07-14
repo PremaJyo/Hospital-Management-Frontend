@@ -5,7 +5,7 @@ import Admin from './Admin';
 import User from './User';
 import { useState } from 'react';
 import '../App.css';
-const List=()=>{
+const Main=()=>{
     const [currentLocation,setCurrentLocation]=useState("Admin");
     return(
         <div className="fluid-container">
@@ -27,4 +27,4 @@ const List=()=>{
         </div>
     )
 }
-export default List;
+export default Main;

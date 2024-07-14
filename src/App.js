@@ -1,4 +1,4 @@
-import List from './components/List';
+import Main from './components/Main';
 import './App.css';
 
 function App() {
