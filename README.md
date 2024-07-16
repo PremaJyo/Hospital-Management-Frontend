@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Role based Vesting smart Contract
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Imports
+@openzeppelin/contracts/token/ERC20/ERC20.sol
+Imported ERC20 tokens and used this tokens in the contract for vesting
 
-## Available Scripts
+This contract manages the distribution of tokens to beneficiaries according to the predefined vesting schedules.It ensures that tokens are gradually released to the beneficiaries based on the cliff and duration specified.
 
-In the project directory, you can run:
+# Features
+1.Role based Vesting : Different roles(User,Partner,Team) have different token allocation percentages and vesting schedules.
 
-### `npm start`
+2.Vesting Management: Allows the owner to set up and manage vesting schedules for users,partners and team members.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3.Event Emissions : Emits events for important events like vesting starting,adding beneficiary and releasing tokens to the beneficiary.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4.Secure Ownership : Only the contract owner can start vesting and add beneficiaries.
 
-### `npm test`
+# Deployment 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1.Compile the Contract:
+  Use Remix or any solidity compiler to compile 'vestingTokens' contract.
 
-### `npm run build`
+2.Deploy the Contract:
+  Deploy the contract on any testnet(Sepholia testnet)or Ethereum mainnet.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3.Initialize the contract :
+  After deployment,initialize the contract with total tokens we want to vest
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4.Start vesting:
+  start the vesting process by calling 'startVesting' as owner
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5.Add Beneficiaries:
+  Add beneficiaries with their respective roles(User,Partner,Team) and token allocation before starting the vesting process.
 
-### `npm run eject`
+6.Release Tokens:
+  Beneficiaries can call the 'releaseTokens' function to claim their vested tokens according to schedule.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Testing
+We can test the functionality using Remix or a local development environment like Truffle or Hardhat. Make sure to:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  Deploy the contract with the total token supply.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  Add beneficiaries with different roles and allocations.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  Start the vesting process.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  Simulate the passage of time and release tokens for the beneficiaries.
